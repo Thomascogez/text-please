@@ -10,11 +10,43 @@ npm install text-please
 
 ## Usage
 
+### Node
+
 ```js
 import { extractText, extractPdfToText, extractDocxToText, extractXlsxToText, extractPlaintextToText } from 'text-please';
+import { readFileSync } from 'node:fs';
+
+const pdfData = readFileSync('document.pdf');
+const text = extractPdfToText(pdfData);
+```
+
+### Web
+
+```js
+import init, { extractText, extractPdfToText, extractDocxToText, extractXlsxToText, extractPlaintextToText } from 'text-please/web';
+import wasm from 'text-please/web/module.wasm?url';
+
+await init(wasm);
 
 const pdfData = await fetch('document.pdf').then(r => r.arrayBuffer());
 const text = extractPdfToText(new Uint8Array(pdfData));
+```
+
+### Cloudflare Worker
+
+```js
+import init, { extractText, extractPdfToText, extractDocxToText, extractXlsxToText, extractPlaintextToText } from 'text-please/cf';
+import wasm from 'text-please/cf/module.wasm';
+
+await init(wasm);
+
+export default {
+  async fetch(request) {
+    const pdfData = await request.arrayBuffer();
+    const text = extractPdfToText(new Uint8Array(pdfData));
+    return new Response(text);
+  }
+};
 ```
 
 ## API
