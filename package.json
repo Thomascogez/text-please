@@ -21,10 +21,38 @@
   "license": "ISC",
   "author": "Thomas cogez",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
+  "exports": {
+    "./node": {
+      "import": "./dist/node/index.js",
+      "types": "./dist/node/index.d.ts"
+    },
+    "./node/module.wasm": {
+      "import": "./dist/node/index_bg.wasm",
+      "types": "./dist/node/index_bg.wasm.d.ts"
+    },
+    "./web": {
+      "import": "./dist/web/index.js",
+      "types": "./dist/web/index.d.ts"
+    },
+    "./web/module.wasm": {
+      "import": "./dist/web/index_bg.wasm",
+      "types": "./dist/web/index_bg.wasm.d.ts"
+    },
+    "./cf": {
+      "import": "./dist/web/index.js",
+      "types": "./dist/web/index.d.ts"
+    },
+    "./cf/module.wasm": {
+      "import": "./dist/web/index_bg.wasm",
+      "types": "./dist/web/index_bg.wasm.d.ts"
+    }
+  },
   "scripts": {
-    "build": "wasm-pack build --no-pack --out-dir ./dist --out-name index && rm -rf dist/.gitignore",
+    "build:node": "wasm-pack build --no-pack --out-dir ./dist/node --target nodejs --out-name index && rm -rf dist/node/.gitignore",
+    "build:web": "wasm-pack build --no-pack --out-dir ./dist/web --target web --out-name index && rm -rf dist/web/.gitignore",
+    "build": "pnpm run \"/^build:.*/\"",
     "changeset": "pnpx @changesets/cli"
   },
   "files": [
