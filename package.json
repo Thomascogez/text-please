@@ -25,7 +25,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "wasm-pack build --no-pack --out-dir ./dist --out-name index && rm -rf dist/.gitignore",
-    "changeset": "pnpx changeset"
+    "changeset": "pnpx @changesets/cli"
   },
   "files": [
     "dist"
