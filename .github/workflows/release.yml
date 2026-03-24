@@ -25,7 +25,10 @@ jobs:
 
         - name: Install wasm-pack
           run: cargo install wasm-pack
- 
+
+        - name: Add wasm32-unknown-unknown target
+          run: rustup target add wasm32-unknown-unknown
+
         - name: Build
           run: pnpm build
 
