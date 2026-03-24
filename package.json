@@ -1,6 +1,6 @@
 {
   "name": "text-please",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Extract plain text from pdf, docx, xlsx, ... ",
   "keywords": [
     "extract",
