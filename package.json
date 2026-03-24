@@ -1,6 +1,6 @@
 {
   "name": "text-please",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extract plain text from pdf, docx, xlsx, ... ",
   "keywords": [
     "extract",
@@ -53,7 +53,8 @@
     "build:node": "wasm-pack build --no-pack --out-dir ./dist/node --target nodejs --out-name index && rm -rf dist/node/.gitignore",
     "build:web": "wasm-pack build --no-pack --out-dir ./dist/web --target web --out-name index && rm -rf dist/web/.gitignore",
     "build": "pnpm run \"/^build:.*/\"",
-    "changeset": "pnpx @changesets/cli"
+    "changeset": "pnpx @changesets/cli",
+    "prepublishOnly": "pnpm run build"
   },
   "files": [
     "dist"
