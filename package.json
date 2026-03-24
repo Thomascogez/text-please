@@ -50,8 +50,8 @@
     }
   },
   "scripts": {
-    "build:node": "wasm-pack build --no-pack --out-dir ./dist/node --target nodejs --out-name index && rm -rf dist/node/.gitignore && pnpm run postbuild:node",
-    "build:web": "wasm-pack build --no-pack --out-dir ./dist/web --target web --out-name index && rm -rf dist/web/.gitignore && pnpm run postbuild:web",
+    "build:node": "wasm-pack build --no-pack --out-dir ./dist/node --target nodejs --out-name index && rm -rf dist/node/.gitignore",
+    "build:web": "wasm-pack build --no-pack --out-dir ./dist/web --target web --out-name index && rm -rf dist/web/.gitignore",
     "postbuild:node": "bash scripts/patch-wasm-dts.sh dist/node",
     "postbuild:web": "bash scripts/patch-wasm-dts.sh dist/web",
     "build": "pnpm run \"/^build:.*/\"",
